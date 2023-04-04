@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% load i18n %}
+{% load leaflet_tags %}
 
 {% block head %}
 {{ wizard.form.media }}
+{% leaflet_js %}
+{% leaflet_css %}
 {% endblock %}
 
 {% block content %}
@@ -26,4 +29,5 @@
 {% endif %}
 <input type="submit" value="{% trans "submit" %}"/>
 </form>
+
 {% endblock %}

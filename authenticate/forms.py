@@ -1,7 +1,6 @@
 from django import forms
 from .models import Composter
-
-
+from django.contrib.gis.forms import OSMWidget
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
     confirm_password = forms.CharField(widget=forms.PasswordInput())
@@ -32,8 +31,19 @@ class UserForm(forms.ModelForm):
             raise forms.ValidationError("Passwords do not match.")
         print('clean method called')
         return cleaned_data
+    
 
 class PointForm(forms.ModelForm):
     class Meta:
         model = Composter
         fields = ['point']
+        widgets = {
+            'point': OSMWidget(attrs={
+                'map_height': 500,
+                'map_width': 800,
+                'map_srid': 4326,
+                'default_zoom': 5,
+                'default_lat': 37.213874,
+                'default_lon': 10.126849,
+            }),
+        }

@@ -59,6 +59,14 @@ INSTALLED_APPS = [
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+LEAFLET_CONFIG = {
+    'DEFAULT_CENTER': (37.213874 , 10.126849),
+    'DEFAULT_ZOOM': 5,
+    'MAX_ZOOM': 19,
+    'MIN_ZOOM': 2,
+}
+#https://stackoverflow.com/questions/59819263/how-to-center-a-leaflet-map-forms-in-a-django-template
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
