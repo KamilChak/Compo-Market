@@ -55,12 +55,12 @@ INSTALLED_APPS = [
     'authenticate',
     'compoAccount',
     'greenerAccount',
+    'blockchain',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LEAFLET_CONFIG = {
-    'DEFAULT_CENTER': (37.213874 , 10.126849),
     'DEFAULT_ZOOM': 5,
     'MAX_ZOOM': 19,
     'MIN_ZOOM': 2,
@@ -82,7 +82,11 @@ ROOT_URLCONF = 'compoMarket2.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [
+            BASE_DIR / 'authenticate/templates',
+            BASE_DIR / 'greenerAccount/templates',
+            BASE_DIR / 'compoAccount/templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -148,6 +152,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'authenticate/static'),
+    os.path.join(BASE_DIR, 'compoAccount/static'),
+    os.path.join(BASE_DIR, 'greenerAccount/static'),
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

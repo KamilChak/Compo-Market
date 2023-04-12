@@ -1,0 +1,45 @@
+.calendar th {
+    background-color: rgb(13, 40, 122);
+    color: white;
+    font-weight: 900;
+}  
+.calendar th, .calendar td {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    width: calc(100% / 7);
+}
+.calendar td .number {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+}
+.calendar td .data {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+}
+.calendar tbody {
+    height: 400px;
+    overflow-y: scroll;
+}
+tbody td {
+    height: 140px;
+    vertical-align: middle;
+}
+.calendar tbody td:empty {
+    background-color: rgb(227, 225, 225);
+}
+.today {
+    color: red;
+    font-size: 28px !important;
+  }
+  

@@ -1,4 +1,4 @@
 from django.shortcuts import render
 
-def dashboard(request):
-    return render(request, 'base.html')
+def compoHome(request):
+    return render(request, 'compoHome.html')

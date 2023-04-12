@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calendar Example</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+  
+</head>
+<body>
+  <div class="container">
+    <h1 id="calendar-heading">Your Calendar</h1>
+    <table class="table calendar">
+      <thead>
+        <tr>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Saturday</th>
+          <th>Sunday</th>
+        </tr>
+      </thead>
+      <tbody id="calendar-body">
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    
+    const today = new Date();
+    const currentMonth = today.getMonth();
+    const currentYear = today.getFullYear();
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+    let html = '';
+    let dayCounter = 1;
+    for (let i = 0; i < 6; i++) {
+      html += '<tr>';
+      for (let j = 0; j < 7; j++) {
+        if (i === 0 && j < new Date(currentYear, currentMonth, 1).getDay()) {
+          html += '<td></td>';
+        } else if (dayCounter > daysInMonth) {
+          html += '<td></td>';
+        } else {
+          html += '<td>';
+          if (dayCounter === today.getDate() && currentMonth === today.getMonth()) {
+            html += '<span class="number today">' + dayCounter + '</span>';
+          } else {
+            html += '<span class="number">' + dayCounter + '</span>';
+          }
+          html += '<span class="data">greener data</span>';
+          html += '</td>';
+          dayCounter++;
+        }
+      }
+      html += '</tr>';
+      if (dayCounter > daysInMonth) {
+        break;
+      }
+    }
+    
+    const monthName = today.toLocaleString('default', { month: 'long' });
+  
+    const calendarHeading = document.getElementById('calendar-heading');
+    calendarHeading.textContent = `Your Calendar - ${monthName} ${currentYear}`;
+    
+    const calendarBody = document.getElementById('calendar-body');
+    calendarBody.innerHTML = html;
+  </script>
+
+</body>
+</html>

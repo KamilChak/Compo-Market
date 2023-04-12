@@ -3,6 +3,5 @@ from . import views
 
 app_name = 'compoAccount'
 urlpatterns = [
-    path('', views.dashboard, name='dashboard'),
-
+    path('', views.compoHome, name='compoHome'),
 ]
